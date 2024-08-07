@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Abstimmung</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1 id="title">Online Abstimmung</h1>
+        <div class="language-switcher">
+            <button onclick="setLanguage('de')">Deutsch</button>
+            <button onclick="setLanguage('en')">English</button>
+        </div>
+        <form id="voteForm">
+            <p id="question">Welche Farbe mögen Sie am liebsten?</p>
+            <label>
+                <input type="radio" name="vote" value="blau"> <span id="option1">Blau</span>
+            </label><br>
+            <label>
+                <input type="radio" name="vote" value="grün"> <span id="option2">Grün</span>
+            </label><br>
+            <label>
+                <input type="radio" name="vote" value="rot"> <span id="option3">Rot</span>
+            </label><br>
+            <button type="button" onclick="submitVote()">Abstimmen</button>
+        </form>
+        <div id="result" style="display: none;">
+            <h2 id="resultTitle">Danke für Ihre Abstimmung!</h2>
+            <p id="resultMessage">Ihre Stimme wurde gezählt.</p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
