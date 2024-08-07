@@ -3,34 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Online Abstimmung</title>
+    <title>Umfrage</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <h1 id="title">Online Abstimmung</h1>
+        <h1 id="title">Umfrage</h1>
         <div class="language-switcher">
             <button onclick="setLanguage('de')">Deutsch</button>
             <button onclick="setLanguage('en')">English</button>
-            <button onclick="setLanguage('fr')">Français</button>
-            <!-- Add more buttons for other languages as needed -->
+            <!-- Fügen Sie hier weitere Sprachoptionen hinzu -->
         </div>
-        <form id="voteForm">
-            <p id="question">Welche Farbe mögen Sie am liebsten?</p>
-            <label>
-                <input type="radio" name="vote" value="blau"> <span id="option1">Blau</span>
-            </label><br>
-            <label>
-                <input type="radio" name="vote" value="grün"> <span id="option2">Grün</span>
-            </label><br>
-            <label>
-                <input type="radio" name="vote" value="rot"> <span id="option3">Rot</span>
-            </label><br>
-            <button type="button" onclick="submitVote()">Abstimmen</button>
+        <form id="surveyForm" onsubmit="handleSubmit(event)">
+            <p id="intro">Hello, like I said in my mail, I have some questions for all of you. Please take the time to answer them.</p>
+            <p id="anonNotice">This is completely anonymous as long as you do not type your ingame name here:</p>
+            <label for="name" id="nameLabel">Ingame Name:</label>
+            <input type="text" id="name" name="name">
+            
+            <p id="question1">First Question: Will you stay with us for the next Season?</p>
+            <label><input type="radio" name="stay" value="yes"> Yes</label><br>
+            <label><input type="radio" name="stay" value="no"> No</label>
+            <input type="text" name="noReason" placeholder="Why?" id="noReason"><br>
+            <label><input type="radio" name="stay" value="unsure"> Unsure</label>
+            <input type="text" name="unsureReason" placeholder="Why?" id="unsureReason"><br>
+            
+            <p id="optionsIntro">We have multiple options for next season, please read through them and answer the questions below:</p>
+            
+            <h3 id="optionA">Option A:</h3>
+            <p id="optionADesc">We wait until September and chill on server. When registration opens we sign-up. Remember that we will then have a sign-up phase to wait through too! We would wait for ~40 Days until it opens, then at least another 21 days until it starts. But: We would be able to gather resources, speed-ups and recruit.</p>
+            
+            <h3 id="optionB">Option B:</h3>
+            <p id="optionBDesc">We go to island immediately. That would mean, signing up on Monday, then around 21 days (3 weeks) and go immediately. Less chance to gather speedups or anything else, less time to organise but we would not get bored. We could decide if we do a chill island, just decide on a target and hit them, if we do diplo or not, etc.</p>
+            
+            <h3 id="optionC">Option C:</h3>
+            <p id="optionCDesc">We go to Barren Lands immediately. That would mean, signing up on Monday too, then also 21 days and go. Also not much time to gather speedups etc. and less time to organise. The good and bad thing at the same time is, that many of us have not gone to Barren Land a lot, so it might be something different and exciting, but that also means, that we have to organise differently and learn a lot. We once again would be bound to a camp and protection times.</p>
+            
+            <p id="question2">Which option would you prefer?</p>
+            <label><input type="radio" name="option" value="A"> Option A</label><br>
+            <label><input type="radio" name="option" value="B"> Option B</label><br>
+            <label><input type="radio" name="option" value="C"> Option C</label><br>
+            <input type="text" name="optionReason" placeholder="And why?"><br>
+            
+            <p id="feedback">Last but not least: Any other feedback or thoughts, you would like to give?</p>
+            <textarea name="feedback" rows="4" cols="50"></textarea><br>
+            
+            <button type="submit">Submit</button>
         </form>
+        
         <div id="result" style="display: none;">
-            <h2 id="resultTitle">Danke für Ihre Abstimmung!</h2>
-            <p id="resultMessage">Ihre Stimme wurde gezählt.</p>
+            <h2 id="resultTitle">Thank you for your participation!</h2>
+            <p id="resultMessage">Your responses have been recorded.</p>
         </div>
     </div>
     <script src="script.js"></script>
