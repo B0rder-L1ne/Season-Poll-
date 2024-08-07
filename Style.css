@@ -39,7 +39,11 @@ label {
     margin: 10px 0;
 }
 
+textarea {
+    width: 100%;
+    margin: 10px 0;
+}
+
 #result {
     text-align: center;
 }
-
