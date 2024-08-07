@@ -1,25 +1,14 @@
-const translations = {
-    de: {
-        title: "Online Abstimmung",
-        question: "Welche Farbe mögen Sie am liebsten?",
-        option1: "Blau",
-        option2: "Grün",
-        option3: "Rot",
-        submitButton: "Abstimmen",
-        resultTitle: "Danke für Ihre Abstimmung!",
-        resultMessage: "Ihre Stimme wurde gezählt."
-    },
-    en: {
-        title: "Online Voting",
-        question: "Which color do you like the most?",
-        option1: "Blue",
-        option2: "Green",
-        option3: "Red",
-        submitButton: "Vote",
-        resultTitle: "Thank you for voting!",
-        resultMessage: "Your vote has been counted."
-    }
-};
+// Load translations from an external JSON file
+const translations = {};
+
+fetch('translations.json')
+    .then(response => response.json())
+    .then(data => {
+        Object.assign(translations, data);
+        // Set default language to German
+        setLanguage('de');
+    })
+    .catch(error => console.error('Error loading translations:', error));
 
 function setLanguage(lang) {
     document.getElementById('title').innerText = translations[lang].title;
@@ -36,6 +25,3 @@ function submitVote() {
     document.getElementById('voteForm').style.display = 'none';
     document.getElementById('result').style.display = 'block';
 }
-
-// Set default language to German
-setLanguage('de');
